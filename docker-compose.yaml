@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  karin:
+    image: karinjs/karin:latest
+    container_name: karin
+    restart: unless-stopped
+    network_mode: "bridge"
+    ports:
+      - "7777:7777"
+    volumes:
+      - /opt/karin:/app

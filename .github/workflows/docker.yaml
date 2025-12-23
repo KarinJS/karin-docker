@@ -1,0 +1,14 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-docker:
+    uses: ./.github/workflows/build.yaml
