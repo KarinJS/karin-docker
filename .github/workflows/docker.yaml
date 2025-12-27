@@ -12,3 +12,5 @@ permissions:
 jobs:
   build-docker:
     uses: ./.github/workflows/build.yaml
+    secrets: inherit
+
