@@ -7,6 +7,10 @@ env:
   DOCKERHUB_REPO: karinjs/karin
   GHCR_REPO: ghcr.io/karinjs/karin
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
