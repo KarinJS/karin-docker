@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# 启动应用
 cd /app
-pnpm install
+pnpm i
 exec pnpm app

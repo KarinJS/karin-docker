@@ -62,7 +62,10 @@ install_karin(){
     docker run -d --name karin --restart=always \
     -e TZ=Asia/Shanghai \
     -p $PORT:7777 \
-    -v $INSTALL_PATH:/app \
+    -v $INSTALL_PATH/config:/app/@karinjs/config \
+    -v $INSTALL_PATH/data:/app/@karinjs/data \
+    -v $INSTALL_PATH/logs:/app/@karinjs/logs \
+    -v $INSTALL_PATH/plugins:/app/plugins
     $DOCKER_IMAGE
     source ~/.bashrc
     echo "Karin 安装完成, 安装目录为 $INSTALL_PATH"
