@@ -20,10 +20,8 @@ done
     read -p "请输入本地挂载路径(默认 /opt/karin): " INSTALL_PATH
 INSTALL_PATH=${INSTALL_PATH:-$DEFAULT_PATH}
 # 检查curl是否安装
-check_curl() {
     if command -v curl >/dev/null 2>&1; then
         echo "curl 已安装"
-        return 0
     else
         echo "正在安装 curl..."
         if command -v apt-get >/dev/null 2>&1; then
@@ -38,12 +36,11 @@ check_curl() {
         fi
         echo "curl 安装完成"
     fi
-}
+
 
 # 检查docker是否安装
     if command -v docker >/dev/null 2>&1; then
         echo "Docker 已安装"
-        return 0
     else
         echo "正在安装 Docker..."
         if command -v pacman >/dev/null 2>&1; then
@@ -65,6 +62,5 @@ check_curl() {
     -v $INSTALL_PATH/logs:/app/@karinjs/logs \
     -v $INSTALL_PATH/plugins:/app/plugins \
     $DOCKER_IMAGE
-    source ~/.bashrc
     echo "Karin 安装完成, 安装目录为 $INSTALL_PATH, 端口号为 $PORT"
     echo -e "可使用\ndocker start karin 启动Karin\ndocker stop karin 停止Karin\ndocker logs -f karin 查看日志"
