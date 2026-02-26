@@ -11,7 +11,5 @@ services:
     environment:
       - PLUGIN_LIST="@karinjs/plugin-basic"
     volumes:
-      - /opt/karin/config:/app/@karinjs/config
-      - /opt/karin/data:/app/@karinjs/data
-      - /opt/karin/logs:/app/@karinjs/logs
+      - /opt/karin/@karinjs:/app/@karinjs
       - /opt/karin/plugins:/app/plugins
