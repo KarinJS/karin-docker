@@ -18,7 +18,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 WORKDIR /app
-RUN pnpm init && pnpm add node-karin@latest && npx karin init
 
 EXPOSE 7777
 CMD ["bash", "/entrypoint.sh"]
