@@ -1,4 +1,4 @@
-FROM node:24-trixie
+FROM node:22-bookworm-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     git \
     redis-server \
-    fontconfig \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
