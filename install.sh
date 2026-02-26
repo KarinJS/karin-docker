@@ -57,8 +57,7 @@ INSTALL_PATH=${INSTALL_PATH:-$DEFAULT_PATH}
     docker run -d --name karin --restart=always \
     -e TZ=Asia/Shanghai \
     -p $PORT:7777 \
-    -v $INSTALL_PATH/@karinjs:/app/@karinjs \
-    -v $INSTALL_PATH/plugins:/app/plugins \
+    -v $INSTALL_PATH/data:/app/ \
     $DOCKER_IMAGE
     echo "Karin 安装完成, 安装目录为 $INSTALL_PATH, 端口号为 $PORT"
     echo -e "可使用\ndocker start karin 启动Karin\ndocker stop karin 停止Karin\ndocker logs -f karin 查看日志"

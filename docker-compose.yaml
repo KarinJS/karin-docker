@@ -8,8 +8,5 @@ services:
     network_mode: "bridge"
     ports:
       - "7777:7777"
-    environment:
-      - PLUGIN_LIST="@karinjs/plugin-basic"
     volumes:
-      - /opt/karin/@karinjs:/app/@karinjs
-      - /opt/karin/plugins:/app/plugins
+      - /opt/karin/data:/app
