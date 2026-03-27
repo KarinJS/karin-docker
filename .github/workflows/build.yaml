@@ -76,6 +76,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           push: true
+          file: browser.Dockerfile
           platforms: ${{ matrix.platform }}
           tags: |
             ${{ env.DOCKERHUB_REPO }}:${{ matrix.platform == 'linux/amd64' && 'browser-amd64' || 'browser-arm64' }}
