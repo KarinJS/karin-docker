@@ -1,6 +1,6 @@
 #!/bin/bash
 DEFAULT_PORT=7777
-DOCKER_IMAGE="karinjs/karin:latest"
+DOCKER_IMAGE="karinjs/karin"
 DEFAULT_PATH="/opt/karin"
 echo '欢迎使用 Karin 安装脚本'
 # 输入端口跟挂载路径
@@ -15,6 +15,20 @@ while true; do
     else
         break
     fi
+done
+
+# 选择镜像版本
+echo "请选择镜像版本:"
+echo "  1) latest   - 基础镜像"
+echo "  2) browser  - 浏览器版镜像（包含 Chromium 及其依赖）"
+while true; do
+    read -p "请输入选项 (默认 1): " TAG_CHOICE
+    TAG_CHOICE=${TAG_CHOICE:-1}
+    case $TAG_CHOICE in
+        1) TAG="latest"; break ;;
+        2) TAG="browser"; break ;;
+        *) echo "请输入有效的选项 (1 或 2)" ;;
+    esac
 done
 
     read -p "请输入本地挂载路径(默认 /opt/karin): " INSTALL_PATH
@@ -53,11 +67,11 @@ INSTALL_PATH=${INSTALL_PATH:-$DEFAULT_PATH}
 
 # 安装Karin
     echo "正在安装 Karin..."
-    docker pull $DOCKER_IMAGE
+    docker pull "$DOCKER_IMAGE:$TAG"
     docker run -d --name karin --restart=always \
     -e TZ=Asia/Shanghai \
     -p $PORT:7777 \
     -v $INSTALL_PATH/data:/app/ \
-    $DOCKER_IMAGE
-    echo "Karin 安装完成, 安装目录为 $INSTALL_PATH, 端口号为 $PORT"
+    "$DOCKER_IMAGE:$TAG"
+    echo "Karin 安装完成, 镜像版本为 $TAG, 安装目录为 $INSTALL_PATH, 端口号为 $PORT"
     echo -e "可使用\ndocker start karin 启动Karin\ndocker stop karin 停止Karin\ndocker logs -f karin 查看日志"
